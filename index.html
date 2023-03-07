@@ -1,3 +1,395 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6fd94b319dcb0fec535a1243f080e0b6487a2b9ee712258ae090badc81543b86
-size 17656
+<!DOCTYPE html>
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>SadTalker</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+    <link rel="stylesheet" href="./srcs/bootstrap.min.css">
+    <link rel="stylesheet" href="./srcs/font-awesome.min.css">
+    <link rel="stylesheet" href="./srcs/codemirror.min.css">
+    <link rel="stylesheet" href="./srcs/app.css">
+
+    <script src="./srcs/jquery.min.js"></script>
+    <script src="./srcs/bootstrap.min.js"></script>
+    <script src="./srcs/codemirror.min.js"></script>
+    <script src="./srcs/clipboard.min.js"></script>
+    
+    <script src="./srcs/app.js"></script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1087.0" data-gr-ext-installed="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>SadTalker</h1> 
+                <h4>Learning Realistic 3D Motion Coefficients for Stylized Audio-Driven <br> Single Image Talking Face Animation</h4>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a >
+                            Wenxuan Zhang *
+                        </a>
+                        <br>Xi'an Jiaotong University
+                    </li>
+                    <li>
+                        <a href="https://vinthony.github.io">
+                          Xiaodong Cun *
+                        </a>
+                        <br>Tencent AI Lab
+                    </li>
+                    <li>
+                        <a href="https://xuanwangvc.github.io/">
+                          Xuan Wang
+                        </a>
+                        <br>Ant Group
+                    </li>
+                    <li>
+                        <a href="https://yzhang2016.github.io/yongnorriszhang.github.io/">
+                          Yong Zhang
+                        </a>
+                        <br>Tencent AI Lab
+                    </li>
+                    <li>
+                        <a href="https://xishen0220.github.io/">
+                            Xi Shen
+                        </a>
+                        <br>Tencent AI Lab
+                    </li>
+                </ul>
+                <ul class="list-inline">
+                    <li>
+                        <a >
+                            Yu Guo
+                        </a>
+                        <br>Xi'an Jiaotong University
+                    </li>
+                    <li>
+                        <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=zh-CN">
+                            Ying Shan
+                        </a>
+                        <br>Tencent AI Lab
+                    </li>
+                    <li>
+                        <a>
+                            Fei Wang
+                        </a>
+                        <br>Xi'an Jiaotong University
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- <div class="row" id="header_img"> -->
+        <!--     <figure class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;2"> -->
+        <!--     <image src="img/teaser.png" class="img&#45;responsive" alt="overview"> -->
+        <!--         <figcaption> -->
+        <!--         </figcaption> -->
+        <!--     </figure> -->
+        <!-- </div> -->
+        <br/>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!-- <h3> -->
+                <!-- <h3 class="text&#45;center"> -->
+                    <!-- Downloads -->
+                <!-- </h3> -->
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/abs/2211.12194">
+                                Paper (Arxiv)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Winfredy/SadTalker">
+                                Code (TODO)
+                            </a>
+                        </li>
+                        <li>
+                            <p href="">
+                                Video (Bilibili)
+                            </p>
+                        </li>
+                        <li>
+                            <p >
+                                Video (Youtube)
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Colab (TODO)
+                            </p>
+                        </li>
+                        <li>
+                            <p href="">
+                                SadTalker x AIGC
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""  width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/sadtalker_supp.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Abstract
+                </h2>
+                <p class="text-justify">
+                    Generating talking head videos through a face image and a piece of speech audio still contains many challenges. 
+                    ie, unnatural head movement, distorted expression, and identity modification. 
+                    We argue that these issues are mainly because of learning from the coupled 2D motion fields.
+                    On the other hand, explicitly using 3D information also suffers problems of stiff expression and incoherent video.
+                    We present SadTalker, which generates 3D motion coefficients (head pose, expression) of the 3DMM from audio and implicitly modulates a novel 3D-aware face render for talking head generation.
+                    To learn the realistic motion coefficients, we explicitly model the connections between audio and different types of motion coefficients individually. 
+                    Precisely, we present ExpNet to learn the accurate facial expression from audio by distilling both coefficients and 3D-rendered faces. 
+                    As for the head pose, we design PoseVAE via a conditional VAE to synthesize head motion in different styles.
+                    Finally, the generated 3D motion coefficients are mapped to the unsupervised 3D keypoints space of the proposed face render, and synthesize the final video.
+                    We conduct extensive experiments to show the superior of our method in terms of motion and video quality.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Results in the wild
+                </h2> 
+                <p class="text-justify"> 
+                    
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""  width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/talking.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video1</strong>: Talking in different languages
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""   width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/chinese_speaker.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video2</strong>: Speaking Chinese
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""  width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/sing.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video3</strong>: Singing in different languages
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""   width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/eye%20blinking.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video4</strong>: Controllable eye blinking
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Comparison
+                </h2> 
+                <p class="text-justify"> 
+                    
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""   width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/compare.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video5</strong>: Comparison on the HDTF dataset
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""   width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/comparison_crossid.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video6</strong>: Comparison on the VoxCeleb2 dataset
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Ablation
+                </h2> 
+                <p class="text-justify"> 
+                    
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""  width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/different_style_same_audio.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video7</strong>: The results of the same driven audio with different styles
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""  width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/different_audio_same_style.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video8</strong>: The results of different driven audios with the same style
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""   width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/ablation_ExpNet.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video9</strong>: Ablation on ExpNet
+                </h5>  
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center last">
+                 <video controls=""  width="100%">
+                    <!-- t=0.001 is a hack to make iPhone show video thumbnail -->
+                    <source src="https://github.com/sadtalker/sadtalker.github.io/blob/main/videos/ablation_facerender.mp4?raw=true" type="video/mp4">
+                </video>
+                <!-- <iframe align="center" width="560" height="315" src="./srcs/GAe0qKKQY_I.html" frameborder="0" allowfullscreen=""></iframe> -->
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h5>
+                    <strong>Video10</strong>: Ablation on face render
+                </h5>  
+            </div>
+        </div>
+
+
+
+ 
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    BibTeX
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly="" style="display: none;">
+@misc{sadtalker,
+title={SadTalker: Learning Realistic 3D Motion Coefficients for Stylized Audio-Driven Single Image Talking Face Animation},
+author={Zhang, Wenxuan and Cun, Xiaodong and Wang, Xuan and Zhang, Yong and Shen, Xi and Guo, Yu and Shan, Ying and Wang, Fei},
+year={2022},
+eprint={2211.12194},
+}
+                    </textarea>
+
+</body>
