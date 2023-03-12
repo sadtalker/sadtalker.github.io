@@ -29,7 +29,6 @@ body {
 
 
 .publication-title {
-  font-size: 28px;
 }
 
 .publication-banner {
@@ -72,9 +71,9 @@ body {
 }
 
 .author-block {
-  display: inline-block;
-  padding: 0 5px;
   font-size: 16px;
+  padding: 0 5px;
+  display: inline-block;
 }
 
 .publication-banner img {
@@ -161,10 +160,10 @@ b{
 }
 .xtitle{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 24px;
+    font-size: 30px;
     text-align: center;
-    margin: 10px 0;
-    font-weight: 400;
+    /* margin: 10px 0; */
+    /* font-weight: 400; */
     /*color: rgb(0, 79, 241);*/
 }
 
@@ -192,18 +191,18 @@ a:after{
   bottom: 0;
   transition:top 200ms cubic-bezier(0, 0.8, 0.13, 1);
   /*background-color: rgba(225, 166, 121, 0.5);*/
-  background-color: rgba(255,211,30, 0.5);
+  background-color: rgba(255,211,30, 0.4);
 }
 .emojilink:after{
   background-color: rgba(255,211,30, 0.0) 
   /*rgba(225, 166, 121, 0.0);*/
 }
 a:hover{
-  color:rgb(255, 180, 240);
+  color: black;
   text-decoration: none;
 }
 a:hover:after{
-  color:rgb(255, 180, 240);
+  color:black;
   /*color: #111;*/
   text-decoration: none;
   top:0%;
