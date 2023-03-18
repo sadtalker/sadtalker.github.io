@@ -214,6 +214,10 @@ a:hover:after{
     margin-top: 5px;
 }
 
+.hero-body > img{
+  text-align: center;
+}
+
 .posts > .post{
     border-bottom: 0;
     padding-bottom:0em;
